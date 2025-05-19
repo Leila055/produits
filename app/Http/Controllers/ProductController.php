@@ -35,7 +35,7 @@ class ProductController extends Controller
          if ($request->hasFile('image')){
                 $data['image'] = $request->file('image')->store('product', 'public');
             }
-            // Créer le produit dans la base de données
+        // Créer le produit dans la base de données
         Product::create($data);
         return redirect()->route('products.index')->with('success','product created succefully');
 

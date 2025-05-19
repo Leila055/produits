@@ -1,4 +1,4 @@
-@extends('base')
+@extends('layouts.app')
 @section('title','Products')
 @section('content')
 <div class="d-flex justify-content-between align-items-center">
@@ -36,7 +36,7 @@
             </td>
             <td>
                  @if ($product->image)
-                    <img src="/storage/{{$product->image }}}" alt="" width="100px">
+                    <img src="storage/{{$product->image }}" alt="" width="100px">
                  @else
                    <span>No image</span>
                  @endif
@@ -64,6 +64,5 @@
     </tbody>
 </table>
 
-        {{ $products->links() }}
-
+{!! $products->links() !!}
 @endsection

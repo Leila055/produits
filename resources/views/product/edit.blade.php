@@ -47,7 +47,7 @@
                     <label for="name" class="form-label">Image</label>
                     <input type="file" name="image" id="image" class="form-control" >
                      @if ($product)
-                     <img src="/storage/{{$product->image }}" alt="" width="100px">
+                     <img src="storage/{{$product->image }}" alt="" width="100px">
                     @endif
                 </div>
             <div class="col-md-12 col-12 text-center">

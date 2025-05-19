@@ -54,7 +54,7 @@
                     <label for="image" class="form-label">Image</label>
                     <input type="file" name="image" id="image" class="form-control" >
                     @if (!empty($product) && $product->image)
-                       <img src="/storage/{{$product->image }}" alt="" width="100px">
+                       <img src="storage/{{$product->image }}" alt="" width="100px">
                     @endif
                 </div>
                 <div class="form-group my-3">
