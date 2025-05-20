@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
-use app\Models\User;
+use App\Models\User;
 
 class AdminAuthenticated
 {
@@ -17,8 +17,14 @@ class AdminAuthenticated
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::check() && Auth::user()->isAdmin()) {
-             return $next($request);
+        if(Auth::check() ) {
+            $user=Auth::user();
+            if($user->isAdmin()) {
+                 return $next($request);
+            }else {
+                return redirect(route('home'));
+             }
+
              }
              abort(403);
 

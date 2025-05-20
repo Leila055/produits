@@ -24,6 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role'
     ];
 
     /**
@@ -45,6 +46,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function hasRole(string $role): bool
+    {
+        return $this->getAttribute('role') === $role;
+    }
+
      public function isAdmin(): bool
     {
         return $this->hasRole('admin');
@@ -55,10 +62,7 @@ class User extends Authenticatable
         return $this->hasRole('user');
     }
 
-    public function hasRole(string $role): bool
-    {
-        return $this->getAttribute('role') === $role;
-    }
+
        public function getRedirectRoute()
     {
         if ($this->isAdmin()) {

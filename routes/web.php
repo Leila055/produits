@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/',[StoreController::class,'index']);
+Route::get('/',[StoreController::class,'index'])->name('home');
 
 Route::middleware(['admin'])->group(function(){
 
