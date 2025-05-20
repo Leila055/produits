@@ -69,6 +69,6 @@ class User extends Authenticatable
             return 'admin_dashboard'; // nom de la route à adapter selon ton fichier web.php
         }
 
-        return RouteServiceProvider::HOME;
+        return 'store_index';
     }
 }

@@ -17,16 +17,9 @@ class AdminAuthenticated
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::check() ) {
-            $user=Auth::user();
-            if($user->isAdmin()) {
-                 return $next($request);
-            }else {
-                return redirect(route('home'));
-             }
-
-             }
-             abort(403);
-
+      // Vérifier si user est connecté et s'il est un admin
+        if (Auth::check() && Auth::user()->isAdmin()) {
+            return $next($request);  //user est un admin, autoriser l'accès
+        }
     }
 }
