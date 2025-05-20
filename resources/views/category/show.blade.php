@@ -1,4 +1,4 @@
-@extends('base')
+@extends('layouts.app')
 @section('title','Categories')
 @section('content')
 <div class="d-flex justify-content-between align-items-center">

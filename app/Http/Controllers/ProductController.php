@@ -16,7 +16,7 @@ class ProductController extends Controller
 
     $products=Product::query()->with('category')->paginate(10);
 
-    return view('product.index', compact('products')); //envoi products vers index.blade.php
+    return view('users.admin.product.index', compact('products')); //envoi products vers index.blade.php
 
 
     }
@@ -25,7 +25,7 @@ class ProductController extends Controller
     {
         $product = new Product();
         $categories = Category::all();
-         return view('product.create', compact('product','categories'));
+         return view('users.admin.product.create', compact('product','categories'));
     }
 
     public function store(ProductRequest $request)
@@ -37,14 +37,14 @@ class ProductController extends Controller
             }
         // Créer le produit dans la base de données
         Product::create($data);
-        return redirect()->route('products.index')->with('success','product created succefully');
+        return redirect()->route('users.admin.products.index')->with('success','product created succefully');
 
      }
 
     public function edit(Product $product)
     {
                 $categories=Category::all();
-                return view('product.edit',compact('product','categories'));
+                return view('users.admin.product.edit',compact('product','categories'));
     }
 
     public function update(ProductRequest $request, Product $product)
@@ -61,7 +61,7 @@ class ProductController extends Controller
      }
         // Mise à jour du produit
         $product->fill($data)->save();
-    return redirect()->route('products.index')->with('success', 'Product updated successfully');
+    return redirect()->route('users.admin.products.index')->with('success', 'Product updated successfully');
 
 
     }
@@ -70,6 +70,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return to_route('products.index')->with('success','product deleted successfully');
+        return to_route('users.admin.products.index')->with('success','product deleted successfully');
    }
 }
